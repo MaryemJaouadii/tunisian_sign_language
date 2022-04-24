@@ -6,4 +6,7 @@ List<TileModel> getPairs() {
 
   //1
   tileModel.setImagePath("assets/");
+  tileModel.setIsSelected(false);
+  pairs.add(tileModel);
+  pairs.add(tileModel);
 }
