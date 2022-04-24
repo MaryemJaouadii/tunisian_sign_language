@@ -15,9 +15,12 @@ void main() async {
 }
 
 
+
 class MyApp extends StatelessWidget {
+
   MyApp({Key key}) : super(key: key);
 
+  static bool lightModeValue=true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,8 +28,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Poppins',
-        primarySwatch: Colors.deepPurple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+       // primarySwatch: Colors.deepPurple,
+       // visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: AnimatedSplashScreen(
         //backgroundColor: const Color.fromRGBO(36, 36, 62, 1),
