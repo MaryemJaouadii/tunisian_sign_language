@@ -5,6 +5,7 @@ Color kSecondaryColor = Color(0xFFf9d65e);
 //Color kBackgroundColor = Color (0xFFf6f6f6);
 Color kLightBackgroundColor =Color(0xFFf4f4f4);
 Color kDarkBackgroundColor =Color(0xFF363567);
+Color ksplashScreenColor = Color(0xFF26304a);
 
 List colors = [
   Color(0xFF4eb2f7),

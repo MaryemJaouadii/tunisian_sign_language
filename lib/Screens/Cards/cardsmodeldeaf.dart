@@ -124,11 +124,21 @@ class _CardsModelState extends State<CardsModel> {
                           margin: EdgeInsets.all(10),
 
                           child:
-                          //Image.asset(data.src[index],)
-                          Image.network(
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            height:MediaQuery.of(context).size.height,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(widget.data.src[index]),
+                              ),
+                            ),
+                          )
+                          //Image.asset(widget.data.src[index],width: 125.0, height: 125.0,)
+                         /* Image.network(
                             widget.data.src[index],
                             // scale: 5,
-                          ),
+                          ),*/
                         ),
                       ),
                     ),

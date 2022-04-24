@@ -4,14 +4,14 @@ import 'package:tunisian_sign_language/Screens/Cards/model.dart';
 //test
 class mydate {
   var familyDate = model([
-    'Tuesday',
+    'تونس',
     'DAD',
     'BOY',
     'GIRL',
     'AUNT',
     'BABY'
   ], [
-    'https://i.ibb.co/z25649s/tuesdayy.gif',
+    'assets/family/ابن.gif',
     'http://asluniversity.com/asl101/gifs/d/dad-fast.gif',
     'http://asluniversity.com/asl101/gifs/b/boy.gif',
     'http://asluniversity.com/asl101/gifs/g/girl.gif',
@@ -19,35 +19,32 @@ class mydate {
     'http://asluniversity.com/asl101/gifs/b/baby.gif'
   ]);
   var expressionData = model([
-    'Me too',
-    'Annoying',
-    'Looks weird',
-    'At another time',
-    'Gotten worse',
-    'Please stop',
-    'Not that I would know',
-    'Disgusting',
-    'Fifty Percent',
-    'Doesn’t matter',
-    'Not good',
-    'I want coffee',
-    'Bad taste',
-    'Delicious',
+    'بنت',
+    'ولد',
+    'ابن',
+    'ابنة',
+    'أخ',
+    'أخت',
+    'خال',
+    'خالة',
+    'عمي',
+    'عمتي',
+    'عائلة',
   ], [
-    'https://media.giphy.com/media/sX02wDWURN9doWNCEc/giphy.gif',
-    'https://media.giphy.com/media/iaMuRohfNkynCyAUIi/giphy.gif',
-    'https://media.giphy.com/media/ulnf64QgzS7s2oQxWv/giphy.gif',
-    'https://media.giphy.com/media/q0Kh2xk3uOKhqPH1aB/giphy.gif',
-    'https://media.giphy.com/media/wBJqQEf5QsIftgQsk0/giphy.gif',
-    'https://media.giphy.com/media/hnM3RJ1eXD6SquZsi0/giphy.gif',
-    'https://media.giphy.com/media/TVFyzY3dcyyHgwCXK1/giphy.gif',
-    'https://media.giphy.com/media/WiFMfCrxEHYU4e8StP/giphy.gif',
-    'https://media.giphy.com/media/NLSLzwOrp18VqGL27O/giphy.gif',
-    'https://media.giphy.com/media/3SXrtH9zLPHdz3Xw3U/giphy.gif',
-    'https://media.giphy.com/media/6GLG1QFTiiD18jIid6/giphy.gif',
-    'https://media.giphy.com/media/iwR3oXJ4ipH68J9k0p/giphy.gif',
-    'https://media.giphy.com/media/mAP8zKkr3rWqyYFT4W/giphy.gif',
-    'https://media.giphy.com/media/es14TJz0SNvyhF7kQF/giphy.gif',
+    'assets/family/بنت.gif',
+    'assets/family/ولد.gif',
+    'assets/family/ابن.gif',
+    'assets/family/ابنة.gif',
+    'assets/family/اخ.gif',
+    'assets/family/اخت.gif',
+    'assets/family/خال.gif',
+    'assets/family/خالة.gif',
+    'assets/family/عمي.gif',
+    'assets/family/عمتي.gif',
+    'assets/family/عائلة.gif',
+
+
+
   ]);
   var placesDate = model([
     'HOME',

@@ -26,6 +26,7 @@ class _categoriesStateState extends State<categoriesState> {
   List categList = [
     'الولايات',
     'العائلة',
+    'الأشهر',
     'الفصول',
     'أيام الأسبوع',
     /*  'Requests',
@@ -41,8 +42,8 @@ class _categoriesStateState extends State<categoriesState> {
     Icons.emoji_people_outlined,
     Icons.place_rounded,
     Icons.timelapse_sharp,
-    /* Icons.volunteer_activism_outlined,
-    Icons.food_bank_rounded,
+     Icons.volunteer_activism_outlined,
+   /* Icons.food_bank_rounded,
     Icons.emoji_emotions,
     Icons.checkroom_outlined,
     Icons.color_lens_outlined,
@@ -54,8 +55,8 @@ class _categoriesStateState extends State<categoriesState> {
     'assets/expre.jpg',
     'assets/places.png',
     'assets/time.jpg',
-    /* 'assets/request.png',
-    'assets/food.png',
+     'assets/request.png',
+    /*'assets/food.png',
     'assets/feeling.jpg',
     'assets/clothes.png',
     'assets/colors.jpg',
@@ -121,7 +122,7 @@ class _categoriesStateState extends State<categoriesState> {
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         CardsModel(data.familyDate)));
-                          } else if (categList[index] == 'Expressions') {
+                          } else if (categList[index] == 'العائلة') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
