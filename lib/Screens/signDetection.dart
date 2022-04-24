@@ -15,13 +15,9 @@ class SignDetection extends StatefulWidget {
 class _SignDetectionState extends State<SignDetection> {
 
 
-
-
-
   String answer = "";
   CameraController cameraController;
   CameraImage cameraImage;
-
 
 
   loadmodel() async {
@@ -31,21 +27,16 @@ class _SignDetectionState extends State<SignDetection> {
   }
 
   initCamera() {
-
-     cameraController = CameraController(cameras.first, ResolutionPreset.medium);
+    cameraController = CameraController(cameras.first, ResolutionPreset.medium);
 
     // OR
-  /*  cameraController = CameraController(
+    /*  cameraController = CameraController(
         CameraDescription(
           name: '0', // 0 for back camera and 1 for front camera
           lensDirection: CameraLensDirection.back,
           sensorOrientation: 0,
         ),
         ResolutionPreset.medium);*/
-
-
-
-
 
 
     cameraController.initialize().then(
@@ -56,7 +47,8 @@ class _SignDetectionState extends State<SignDetection> {
         setState(
               () {
             cameraController.startImageStream(
-                  (image) => {
+                  (image) =>
+              {
                 if (true)
                   {
                     // setState(
@@ -118,7 +110,7 @@ class _SignDetectionState extends State<SignDetection> {
   void initState() {
     super.initState();
     initCamera();
-     loadmodel();
+    loadmodel();
   }
 
   @override
@@ -129,6 +121,7 @@ class _SignDetectionState extends State<SignDetection> {
     cameraController.dispose();
   }
 
+  /*
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -185,92 +178,11 @@ class _SignDetectionState extends State<SignDetection> {
       ),
     );
   }
+*/
 
-
-
-}
-
-
-
-  /* testtttt
-  bool isWorking = false;
-  String result = "";
-  bool isIngredient = true;
-  CameraController cameraController;
-  CameraImage imgCamera;
-  String output;
-
-  bool frontCamera = false;
-
-  loadModel() async {
-    await Tflite.loadModel(
-        model: "assets/model.tflite", labels: "assets/labels.txt");
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    loadModel();
-    loadCamera();
-  }
-
-
-
-  loadCamera() {  cameraController = CameraController(cameras.first, ResolutionPreset.medium);
-    cameraController.initialize().then((value) {
-      if (!mounted) {
-        return;
-      }
-
-      setState(() {
-        cameraController.startImageStream((image) => {
-              if (!isWorking)
-                {isWorking = true, imgCamera = image, runModelOnStreamFrames()}
-            });
-      });
-    });
-  }
-
-  runModelOnStreamFrames() async {
-    String label;
-    double conf;
-
-    if (imgCamera != null) {
-      var predictions = await Tflite.runModelOnFrame(
-          bytesList: imgCamera.planes.map((plane) {
-            return plane.bytes;
-          }).toList(),
-          imageHeight: imgCamera.height,
-          imageWidth: imgCamera.width,
-          imageMean: 127.5,
-          imageStd: 127.5,
-          rotation: 90,
-          numResults: 2,
-          threshold: 0.1,
-          asynch: true);
-      predictions.forEach((element) {
-        setState(() {
-          output = element['label'];
-        });
-      });
-    }
-  }
-
-  @override
-  Future<void> dispose() async {
-    super.dispose();
-    await Tflite.close();
-    cameraController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
-
     return MaterialApp(
       home: SafeArea(
         child: Scaffold(
@@ -282,8 +194,10 @@ class _SignDetectionState extends State<SignDetection> {
                     Center(
                       child: Container(
                         margin: EdgeInsets.only(top: 35),
-                        height: 270,
-                        width: 360,
+                        // height: 270,
+                        // width: 360,
+                        height: MediaQuery.of(context).size.height*0.5,
+                        width: MediaQuery.of(context).size.width*0.9,
                         child: AspectRatio(
                           aspectRatio: cameraController.value.aspectRatio,
                           child: CameraPreview(cameraController),
@@ -297,7 +211,7 @@ class _SignDetectionState extends State<SignDetection> {
                     margin: EdgeInsets.only(top: 55.0),
                     child: SingleChildScrollView(
                       child: Text(
-                        output != null ? output : 'output',
+                        answer != null ? answer: 'output',
                         style: TextStyle(
                           fontSize: 30.0,
                         ),
@@ -312,122 +226,10 @@ class _SignDetectionState extends State<SignDetection> {
         ),
       ),
     );
-
-    /*return Scaffold(
-      appBar: AppBar(
-        title: Text('Live Sign Detection'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.7,
-              width: MediaQuery.of(context).size.height * 0.7,
-              child: (cameraController?.value?.isInitialized ?? false)
-                  ? Container()
-                  : AspectRatio(
-                      aspectRatio: cameraController.value.aspectRatio,
-                      child: CameraPreview(cameraController),
-                    ),
-            ),
-          ),
-          Text(
-            output!=null? output : 'test' ,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-        ],
-      ),
-    );*/
-  }
-
-  /*
- maryem
-
- CameraImage cameraImage;
-  CameraController cameraController;
-  String output = '';
-
-  @override
-  void initState( ) {
-    super.initState();
-    loadCamera();
-    loadmodel();
-  }
-
-  loadCamera() {
-    cameraController = CameraController(cameras[0], ResolutionPreset.medium);
-    cameraController.initialize().then((value) {
-      if (!mounted) {
-        return;
-      } else {
-        setState(() {
-          cameraController.startImageStream((imageStream) {
-            cameraImage = imageStream;
-            runModel();
-          });
-        });
-      }
-    });
-  }
-
-  runModel() async {
-    if (cameraImage != null) {
-      var predictions = await Tflite.runModelOnFrame(
-          bytesList: cameraImage.planes.map((plane) {
-            return plane.bytes;
-          }).toList(),
-          imageHeight: cameraImage.height,
-          imageWidth: cameraImage.width,
-          imageMean: 127.5,
-          imageStd: 127.5,
-          rotation: 90,
-          numResults: 2,
-          threshold: 0.1,
-          asynch: true);
-      predictions.forEach((element) {
-        setState(() {
-          output = element['label'];
-        });
-      });
-    }
-  }
-
-
-  loadmodel()async {
-    await Tflite.loadModel(model: "assets/model.tflite", labels: "assets/labels.txt");
-
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Live Sign Detection'),
-      ),
-      body:Column(
-        children: [
-          Padding(padding: EdgeInsets.all(20),
-          child: Container(
-            height: MediaQuery.of(context).size.height*0.7,
-            width:MediaQuery.of(context).size.height*0.7 ,
-            child:(cameraController?.value?.isInitialized ?? false) ?
-            Container():
-            AspectRatio(aspectRatio: (this.cameraController?.value?.aspectRatio) ?? 1.1,child: CameraPreview(cameraController),),
-          ),
-          ),
-          Text(output,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20
-            ),
-          ),
-        ],
-      ) ,
-    );
   }
 }
 
 
-   */
-  */
+
+
+
