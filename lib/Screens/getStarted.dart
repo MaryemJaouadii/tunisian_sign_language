@@ -1,11 +1,9 @@
 // ignore_for_file: prefer_const_constructors, file_names
 
-import 'package:tunisian_sign_language/Screens/Cards/categories.dart';
-import 'package:tunisian_sign_language/Screens/sectionOne/firstSection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:getwidget/components/card/gf_card.dart';
-import 'package:getwidget/getwidget.dart';
+import 'package:tunisian_sign_language/Game.dart';
+import 'package:tunisian_sign_language/Screens/Cards/categories.dart';
 import 'package:tunisian_sign_language/Screens/signDetection.dart';
 import 'package:tunisian_sign_language/components/category_card.dart';
 import 'package:tunisian_sign_language/constants.dart';
@@ -25,7 +23,7 @@ class _getStartedState extends State<getStarted> {
     String personType2 = 'Normal';
     return Scaffold(
 
-      /*  appBar: AppBar(
+        /*  appBar: AppBar(
           title: Align(alignment: Alignment.centerRight,child: Image.asset('assets/logo_bdd_text.png', width: 100,)),
 
           toolbarHeight: 100,
@@ -36,10 +34,10 @@ class _getStartedState extends State<getStarted> {
         ),*/
         //backgroundColor: Color.fromRGBO(36, 36, 62, 1),
         // backgroundColor: Color(0xFFFEF9EE),
-        backgroundColor:MyApp.lightModeValue? kLightBackgroundColor:kDarkBackgroundColor,
+        backgroundColor:
+            MyApp.lightModeValue ? kLightBackgroundColor : kDarkBackgroundColor,
         body: Stack(
           children: [
-
             Container(
               height: 250,
               child: AppBar(
@@ -62,8 +60,13 @@ class _getStartedState extends State<getStarted> {
                 ),
               ),
             ),
-            Align(alignment: Alignment.topRight,child: Image.asset('assets/logo_bdd_text.png', width: 100,)),
-           /* CupertinoSwitch(
+            Align(
+                alignment: Alignment.topRight,
+                child: Image.asset(
+                  'assets/logo_bdd_text.png',
+                  width: 100,
+                )),
+            /* CupertinoSwitch(
 
               value: MyApp.lightModeValue,
               onChanged: (value) {
@@ -74,16 +77,21 @@ class _getStartedState extends State<getStarted> {
               },
             ),*/
 
-            IconButton(onPressed: (){ MyApp.lightModeValue=!MyApp.lightModeValue; setState(() {
-
-            });}, icon: MyApp.lightModeValue? Icon(Icons.wb_sunny,): Icon(Icons.nights_stay)),
-
-
+            IconButton(
+                onPressed: () {
+                  MyApp.lightModeValue = !MyApp.lightModeValue;
+                  setState(() {});
+                },
+                icon: MyApp.lightModeValue
+                    ? Icon(
+                        Icons.wb_sunny,
+                      )
+                    : Icon(Icons.nights_stay)),
             Padding(
-              padding: EdgeInsets.only(left: 20.0,right:20.0, top: 90),
+              padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 90),
               child: SingleChildScrollView(
                 child: Column(
-                 // mainAxisAlignment: MainAxisAlignment.center,
+                  // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CategoryCard(() {
                       Navigator.push(
@@ -107,11 +115,14 @@ class _getStartedState extends State<getStarted> {
                       Navigator.pushNamed(context, SignDetection.routeName);
                     }, 'assets/detection.png', 'تحب تجرب؟', Color(0xFFd8e3ff),
                         Color(0xFF678ad9)),
+                    CategoryCard(() {
+                      Navigator.pushNamed(context, MemoryGame.routeName);
+                    }, 'assets/question.png', 'يلا نلعبو', Colors.pink,
+                        Colors.white)
                   ],
                 ),
               ),
             ),
-
           ],
         ));
   }

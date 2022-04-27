@@ -1,62 +1,121 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'gameComponents/infoCard.dart';
+import 'gameUtils/utils.dart';
 
-class MyApp extends StatelessWidget {
+class MemoryGame extends StatefulWidget {
+  static String routeName = "/memoryGame";
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Game",
-      home: Game(),
-    );
+  _MemoryGameState createState() => _MemoryGameState();
+}
+
+class _MemoryGameState extends State<MemoryGame> {
+  //setting text style
+  TextStyle whiteText = TextStyle(color: Colors.white);
+  bool hideTest = false;
+  Game _game = Game();
+
+  //game stats
+  int tries = 0;
+  int score = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _game.initGame();
   }
-}
 
-class Game extends StatefulWidget {
-  @override
-  _GameState createState() => _GameState();
-}
-
-class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Text("0/800"),
-            Text("Points"),
-            SizedBox(
-              height: 20.0,
+      backgroundColor: Color(0xFFE55870),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "Memory Game",
+              style: TextStyle(
+                fontSize: 48.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
-            GridView(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  mainAxisSpacing: 0.0, maxCrossAxisExtent: 100.0),
-            )
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 24.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              info_card("Tries", "$tries"),
+              info_card("Score", "$score"),
+            ],
+          ),
+          SizedBox(
+              height: MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
+              child: GridView.builder(
+                  itemCount: _game.gameImg.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 16.0,
+                    mainAxisSpacing: 16.0,
+                  ),
+                  padding: EdgeInsets.all(16.0),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        print(_game.matchCheck);
+                        setState(() {
+                          //incrementing the clicks
+                          tries++;
+                          _game.gameImg[index] = _game.cards_list[index];
+                          _game.matchCheck
+                              .add({index: _game.cards_list[index]});
+                          print(_game.matchCheck.first);
+                        });
+                        if (_game.matchCheck.length == 2) {
+                          if (_game.matchCheck[0].values.first ==
+                              _game.matchCheck[1].values.first) {
+                            print("true");
+                            //incrementing the score
+                            score += 100;
+                            _game.matchCheck.clear();
+                          } else {
+                            print("false");
+
+                            Future.delayed(Duration(milliseconds: 500), () {
+                              print(_game.gameColors);
+                              setState(() {
+                                _game.gameImg[_game.matchCheck[0].keys.first] =
+                                    _game.hiddenCardpath;
+                                _game.gameImg[_game.matchCheck[1].keys.first] =
+                                    _game.hiddenCardpath;
+                                _game.matchCheck.clear();
+                              });
+                            });
+                          }
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFFB46A),
+                          borderRadius: BorderRadius.circular(8.0),
+                          image: DecorationImage(
+                            image: AssetImage(_game.gameImg[index]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    );
+                  }))
+        ],
       ),
-    );
-  }
-}
-
-class Tile extends StatefulWidget {
-  String imagePath, selected;
-  _GameState parent;
-
-  Tile({this.imagePath, this.selected, this.parent});
-
-  @override
-  _TileState createState() => _TileState();
-}
-
-class _TileState extends State<Tile> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      child: Image.asset(widget.imagePath),
     );
   }
 }
