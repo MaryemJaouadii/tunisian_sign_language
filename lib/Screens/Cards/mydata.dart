@@ -1,24 +1,35 @@
 import 'package:tunisian_sign_language/Screens/Cards/model.dart';
 
-
 //test
-class mydate {
-  var familyDate = model([
-    'تونس',
-    'DAD',
-    'BOY',
-    'GIRL',
-    'AUNT',
-    'BABY'
+class mydata {
+  var monthsData = model([
+    'جانفي',
+    'فيفري',
+    'مارس',
+    'أفريل',
+    'ماي',
+    'جوان',
+    'جويلية',
+    'أوت',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر'
   ], [
-    'assets/family/ابن.gif',
-    'http://asluniversity.com/asl101/gifs/d/dad-fast.gif',
-    'http://asluniversity.com/asl101/gifs/b/boy.gif',
-    'http://asluniversity.com/asl101/gifs/g/girl.gif',
-    'http://asluniversity.com/asl101/gifs/a/aunt.gif',
-    'http://asluniversity.com/asl101/gifs/b/baby.gif'
+    'assets/months/january.gif',
+    'assets/months/february.gif',
+    'assets/months/march.gif',
+    'assets/months/april.gif',
+    'assets/months/may.gif',
+    'assets/months/june.gif',
+    'assets/months/july.gif',
+    'assets/months/august.gif',
+    'assets/months/september.gif',
+    'assets/months/october.gif',
+    'assets/months/november.gif',
+    'assets/months/december.gif',
   ]);
-  var expressionData = model([
+  var familyData = model([
     'بنت',
     'ولد',
     'ابن',
@@ -42,9 +53,6 @@ class mydate {
     'assets/family/عمي.gif',
     'assets/family/عمتي.gif',
     'assets/family/عائلة.gif',
-
-
-
   ]);
   var placesDate = model([
     'HOME',

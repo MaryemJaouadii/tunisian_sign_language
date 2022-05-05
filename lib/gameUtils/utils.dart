@@ -4,14 +4,7 @@ class Game {
   final Color hiddenCard = Colors.red;
   List<Color> gameColors;
   List<String> gameImg;
-  List<Color> cards = [
-    Colors.green,
-    Colors.yellow,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.blue
-  ];
+
   final String hiddenCardpath = "assets/question.png";
   List<String> cards_list = [
     "assets/family/ابن.gif",

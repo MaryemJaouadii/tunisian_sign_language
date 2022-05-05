@@ -2,13 +2,12 @@
 
 import 'dart:ui';
 
+import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:tunisian_sign_language/Screens/Cards/cardsmodeldeaf.dart';
 import 'package:tunisian_sign_language/Screens/Cards/cardsmodelnormal.dart';
 import 'package:tunisian_sign_language/Screens/Cards/mydata.dart';
 import 'package:tunisian_sign_language/constants.dart';
-import 'dart:math';
-import 'package:blurrycontainer/blurrycontainer.dart';
 
 import '../../main.dart';
 
@@ -21,7 +20,7 @@ class categoriesState extends StatefulWidget {
 }
 
 class _categoriesStateState extends State<categoriesState> {
-  var data = mydate();
+  var data = mydata();
 
   List categList = [
     'الولايات',
@@ -42,8 +41,8 @@ class _categoriesStateState extends State<categoriesState> {
     Icons.emoji_people_outlined,
     Icons.place_rounded,
     Icons.timelapse_sharp,
-     Icons.volunteer_activism_outlined,
-   /* Icons.food_bank_rounded,
+    Icons.volunteer_activism_outlined,
+    /* Icons.food_bank_rounded,
     Icons.emoji_emotions,
     Icons.checkroom_outlined,
     Icons.color_lens_outlined,
@@ -55,7 +54,7 @@ class _categoriesStateState extends State<categoriesState> {
     'assets/expre.jpg',
     'assets/places.png',
     'assets/time.jpg',
-     'assets/request.png',
+    'assets/request.png',
     /*'assets/food.png',
     'assets/feeling.jpg',
     'assets/clothes.png',
@@ -63,14 +62,13 @@ class _categoriesStateState extends State<categoriesState> {
     'assets/numbers.png',*/
   ];
 
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         // backgroundColor: const Color.fromRGBO(36, 36, 62, 1),
-        backgroundColor:MyApp.lightModeValue? kLightBackgroundColor:kDarkBackgroundColor,
+        backgroundColor:
+            MyApp.lightModeValue ? kLightBackgroundColor : kDarkBackgroundColor,
         body: Stack(
           children: [
             Container(
@@ -97,12 +95,24 @@ class _categoriesStateState extends State<categoriesState> {
             ),
             Padding(
               padding: const EdgeInsets.all(30.0),
-              child: Align(alignment: Alignment.topRight,child: Text('التصنيفات', style: TextStyle(fontSize: 30, color: Colors.white),)),
+              child: Align(
+                  alignment: Alignment.topRight,
+                  child: Text(
+                    'التصنيفات',
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  )),
             ),
-
-            IconButton(onPressed: (){  setState(() {
-              MyApp.lightModeValue=!MyApp.lightModeValue;
-            });}, icon: MyApp.lightModeValue? Icon(Icons.wb_sunny,): Icon(Icons.nights_stay)),
+            IconButton(
+                onPressed: () {
+                  setState(() {
+                    MyApp.lightModeValue = !MyApp.lightModeValue;
+                  });
+                },
+                icon: MyApp.lightModeValue
+                    ? Icon(
+                        Icons.wb_sunny,
+                      )
+                    : Icon(Icons.nights_stay)),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 70),
               child: GridView.builder(
@@ -116,66 +126,66 @@ class _categoriesStateState extends State<categoriesState> {
                     return InkWell(
                       onTap: () {
                         if (widget.perType == 'Deaf') {
-                          if (categList[index] == 'الولايات') {
+                          if (categList[index] == 'الأشهر') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(data.familyDate)));
+                                        CardsModel(data.monthsData)));
                           } else if (categList[index] == 'العائلة') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(data.expressionData)));
-                          } else if (categList[index] == 'Places') {
+                                        CardsModel(data.familyData)));
+                          } else if (categList[index] == 'الولايات') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         CardsModel(data.placesDate)));
-                          } else if (categList[index] == 'Time') {
+                          } else if (categList[index] == 'الفصول') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         CardsModel(data.timeDate)));
-                          } else if (categList[index] == 'Requests') {
+                          } else if (categList[index] == 'أيام الأسبوع') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().requestsDate)));
+                                        CardsModel(mydata().requestsDate)));
                           } else if (categList[index] == 'Food') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().foodData)));
+                                        CardsModel(mydata().foodData)));
                           } else if (categList[index] == 'Feelings') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().feelingDate)));
+                                        CardsModel(mydata().feelingDate)));
                           } else if (categList[index] == 'Clothes') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().clothesDate)));
+                                        CardsModel(mydata().clothesDate)));
                           } else if (categList[index] == 'Colors') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().colorsDate)));
+                                        CardsModel(mydata().colorsDate)));
                           } else if (categList[index] == 'Numbers') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModel(mydate().numbersData)));
+                                        CardsModel(mydata().numbersData)));
                           }
                         } else if (widget.perType == 'Normal') {
                           if (categList[index] == 'Family') {
@@ -183,13 +193,13 @@ class _categoriesStateState extends State<categoriesState> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModelNormal(data.familyDate)));
-                          } else if (categList[index] == 'الولايات') {
+                                        CardsModelNormal(data.familyData)));
+                          } else if (categList[index] == 'الأشهر') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModelNormal(data.expressionData)));
+                                        CardsModelNormal(data.monthsData)));
                           } else if (categList[index] == 'Places') {
                             Navigator.push(
                                 context,
@@ -207,110 +217,109 @@ class _categoriesStateState extends State<categoriesState> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CardsModelNormal(
-                                        mydate().requestsDate)));
+                                        mydata().requestsDate)));
                           } else if (categList[index] == 'Food') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModelNormal(mydate().foodData)));
+                                        CardsModelNormal(mydata().foodData)));
                           } else if (categList[index] == 'Feelings') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CardsModelNormal(
-                                        mydate().feelingDate)));
+                                        mydata().feelingDate)));
                           } else if (categList[index] == 'Clothes') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CardsModelNormal(
-                                        mydate().clothesDate)));
+                                        mydata().clothesDate)));
                           } else if (categList[index] == 'Colors') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CardsModelNormal(mydate().colorsDate)));
+                                        CardsModelNormal(mydata().colorsDate)));
                           } else if (categList[index] == 'Numbers') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => CardsModelNormal(
-                                        mydate().numbersData)));
+                                        mydata().numbersData)));
                           }
                         }
                       },
-                      child:  MyApp.lightModeValue?
-
-
-                      Container(
-                       decoration: BoxDecoration(
-                         borderRadius: BorderRadius.circular(20),
-                         color: colors[index],
-                       ),
-                        height: 150,
-                        width: 250,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: colors[index],
-                                child: Icon(
-                                  catIcon[index],
-                                  size: 30,
-                                  color: Colors.white,
+                      child: MyApp.lightModeValue
+                          ? Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: colors[index],
+                              ),
+                              height: 150,
+                              width: 250,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: colors[index],
+                                      child: Icon(
+                                        catIcon[index],
+                                        size: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10.0),
+                                      child: Text(
+                                        categList[index],
+                                        style: TextStyle(
+                                            color: MyApp.lightModeValue
+                                                ? Colors.white
+                                                : colors[index],
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
-                                child: Text(
-                                  categList[index],
-                                  style: TextStyle(
-                                      color: MyApp.lightModeValue? Colors.white: colors[index],
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 20),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-
+                            )
                           : BlurryContainer(
-                        borderRadius: BorderRadius.circular(20),
-                        bgColor: Color(0xFF2a2d5e),
-                        height: 150,
-                        width: 250,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundColor: colors[index],
-                                child: Icon(
-                                  catIcon[index],
-                                  size: 30,
-                                  color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              bgColor: Color(0xFF2a2d5e),
+                              height: 150,
+                              width: 250,
+                              child: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: Column(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: colors[index],
+                                      child: Icon(
+                                        catIcon[index],
+                                        size: 30,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10.0),
+                                      child: Text(
+                                        categList[index],
+                                        style: TextStyle(
+                                            color: colors[index],
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 20),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10.0),
-                                child: Text(
-                                  categList[index],
-                                  style: TextStyle(
-                                      color: colors[index],
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 20),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                            ),
                     );
                   }),
             ),

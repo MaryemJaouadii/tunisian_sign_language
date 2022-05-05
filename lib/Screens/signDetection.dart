@@ -1,5 +1,4 @@
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tflite/tflite.dart';
 import 'package:tunisian_sign_language/main.dart';
@@ -13,17 +12,13 @@ class SignDetection extends StatefulWidget {
 }
 
 class _SignDetectionState extends State<SignDetection> {
-
-
   String answer = "";
   CameraController cameraController;
   CameraImage cameraImage;
 
-
   loadmodel() async {
     Tflite.loadModel(
-        model: "assets/model_unquant.tflite", labels: "assets/labels.txt"
-    );
+        model: "assets/model_unquant.tflite", labels: "assets/labels.txt");
   }
 
   initCamera() {
@@ -38,17 +33,15 @@ class _SignDetectionState extends State<SignDetection> {
         ),
         ResolutionPreset.medium);*/
 
-
     cameraController.initialize().then(
-          (value) {
+      (value) {
         if (!mounted) {
           return;
         }
         setState(
-              () {
+          () {
             cameraController.startImageStream(
-                  (image) =>
-              {
+              (image) => {
                 if (true)
                   {
                     // setState(
@@ -72,7 +65,7 @@ class _SignDetectionState extends State<SignDetection> {
     if (cameraImage != null) {
       var predictions = await Tflite.runModelOnFrame(
           bytesList: cameraImage.planes.map(
-                (plane) {
+            (plane) {
               return plane.bytes;
             },
           ).toList(),
@@ -88,7 +81,7 @@ class _SignDetectionState extends State<SignDetection> {
       answer = '';
 
       predictions.forEach(
-            (prediction) {
+        (prediction) {
           answer +=
               prediction['label'].toString().substring(0, 1).toUpperCase() +
                   prediction['label'].toString().substring(1) +
@@ -99,7 +92,7 @@ class _SignDetectionState extends State<SignDetection> {
       );
 
       setState(
-            () {
+        () {
           answer = answer;
         },
       );
@@ -180,7 +173,6 @@ class _SignDetectionState extends State<SignDetection> {
   }
 */
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -196,8 +188,8 @@ class _SignDetectionState extends State<SignDetection> {
                         margin: EdgeInsets.only(top: 35),
                         // height: 270,
                         // width: 360,
-                        height: MediaQuery.of(context).size.height*0.5,
-                        width: MediaQuery.of(context).size.width*0.9,
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.9,
                         child: AspectRatio(
                           aspectRatio: cameraController.value.aspectRatio,
                           child: CameraPreview(cameraController),
@@ -211,7 +203,7 @@ class _SignDetectionState extends State<SignDetection> {
                     margin: EdgeInsets.only(top: 55.0),
                     child: SingleChildScrollView(
                       child: Text(
-                        answer != null ? answer: 'output',
+                        answer != null ? answer : 'output',
                         style: TextStyle(
                           fontSize: 30.0,
                         ),
@@ -228,8 +220,3 @@ class _SignDetectionState extends State<SignDetection> {
     );
   }
 }
-
-
-
-
-

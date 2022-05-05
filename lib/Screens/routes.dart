@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/widgets.dart';
-import 'package:tunisian_sign_language/Game.dart';
 import 'package:tunisian_sign_language/OnBoarding/onBoard.dart';
+import 'package:tunisian_sign_language/Screens/Game.dart';
 import 'package:tunisian_sign_language/Screens/getStarted.dart';
 import 'package:tunisian_sign_language/Screens/sectionOne/firstSection.dart';
 import 'package:tunisian_sign_language/Screens/signDetection.dart';
