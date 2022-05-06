@@ -54,43 +54,96 @@ class mydata {
     'assets/family/عمتي.gif',
     'assets/family/عائلة.gif',
   ]);
-  var placesDate = model([
-    'HOME',
-    'WORK',
-    'School',
-    'CAR',
-    'IN',
+  var seasonsData = model([
+    'شتاء',
+    'ربيع',
+    'صيف',
+    'خريف',
+
   ], [
-    'http://asluniversity.com/asl101/gifs/h/home-2.gif',
-    'http://asluniversity.com/asl101/gifs/w/work-general.gif',
-    'http://asluniversity.com/asl101/gifs/s/school.gif',
-    'http://asluniversity.com/asl101/gifs/c/car.gif',
-    'http://asluniversity.com/asl101/gifs/i/inside.gif',
+    'assets/seasons/chte.gif',
+    'assets/seasons/rbi3.gif',
+    'assets/seasons/sif.gif',
+    'assets/seasons/khrif.gif',
+
   ]);
-  var timeDate = model([
-    'NIGHT',
-    'MONTH',
-    'YEAR',
-    'FUTURE',
-    'FINISH',
+  var daysData = model([
+    'يوم',
+    'أسبوع',
+    'الأحد',
+    'الاثنين',
+    'الثلاثاء',
+    'الأربعاء',
+    'الخميس',
+    'الجمعة',
+    'السبت'
   ], [
-    'http://asluniversity.com/asl101/gifs/n/night.gif',
-    'http://asluniversity.com/asl101/gifs/m/month-1.gif',
-    'http://asluniversity.com/asl101/gifs/y/year-2.gif',
-    'http://asluniversity.com/asl101/gifs/f/future.gif',
-    'http://asluniversity.com/asl101/gifs/f/finish.gif',
+    'assets/days/day.gif',
+    'assets/days/week.gif',
+    'assets/days/sunday.gif',
+    'assets/days/monday.gif',
+    'assets/days/tuesday.gif',
+    'assets/days/wednesday.gif',
+    'assets/days/thursday.gif',
+    'assets/days/friday.gif',
+    'assets/days/saturday.gif',
+
+
   ]);
-  var requestsDate = model([
-    'EXCUSE',
-    'THANK YOU',
-    'HELP',
-    'HOW',
+  var govsData = model([
+    'أريانة',
+    'باجة',
+    'بنزرت',
+    'بن عروس',
+    'تطاوين',
+    'توزر',
+    'تونس',
+    'جندوبة',
+    'زغوان',
+    'سليانة',
+    'سوسة',
+    'سيدي بوزيد',
+    '	صفاقس',
+    'قابس',
+    'قبلي',
+    'القصرين',
+    'قفصة',
+    'القيروان',
+    'الكاف',
+    'مدنين',
+    'المنستير',
+    'منوبة',
+    'المهدية',
+    '	نابل',
   ], [
-    'http://asluniversity.com/asl101/gifs/e/excuse.gif',
-    'http://asluniversity.com/asl101/gifs/t/thank-you.gif',
-    'http://asluniversity.com/asl101/gifs/h/help.gif',
-    'http://asluniversity.com/asl101/gifs/h/how-2h.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+    'assets/governorats/.gif',
+
   ]);
+
+  /*
   var foodData = model([
     'PIZZA ',
     'HAMBURGER',
@@ -179,5 +232,5 @@ class mydata {
     'http://asluniversity.com/asl101/signjpegs/numbers/number08.jpg',
     'http://asluniversity.com/asl101/signjpegs/numbers/number09.jpg',
     'http://asluniversity.com/asl101/gifs-animated/10.gif',
-  ]);
+  ]);*/
 }
