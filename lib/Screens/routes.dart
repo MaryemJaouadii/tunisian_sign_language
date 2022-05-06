@@ -6,7 +6,6 @@ import 'package:tunisian_sign_language/Screens/Game.dart';
 import 'package:tunisian_sign_language/Screens/getStarted.dart';
 import 'package:tunisian_sign_language/Screens/sectionOne/firstSection.dart';
 import 'package:tunisian_sign_language/Screens/signDetection.dart';
-
 import 'getStarted.dart';
 
 // We use name route
