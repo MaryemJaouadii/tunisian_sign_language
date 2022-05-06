@@ -131,10 +131,16 @@ class _CardsModelNormalState extends State<CardsModelNormal> {
                           elevation: 4,
                           shadowColor: Color.fromRGBO(190, 18, 277, 2),
                           margin: EdgeInsets.all(10),
-                          child: Image.network(
-                            widget.data.src[index],
-                            // scale: 5,
-                          ),
+                          child:Container(
+                            width: MediaQuery.of(context).size.width,
+                            height:MediaQuery.of(context).size.height,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: AssetImage(widget.data.src[index]),
+                              ),
+                            ),
+                          )
                         ),
                       ),
                     ),

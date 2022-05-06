@@ -108,7 +108,7 @@ class _MemoryGameState extends State<MemoryGame> {
                             });
                             if (_game.matchCheck.length == 2) {
                               if (_game.matchCheck[0].values.first ==
-                                  _game.matchCheck[1].values.first) {
+                                  'gamesLabels/'+_game.matchCheck[1].values.first   ||  'gamesLabels/'+_game.matchCheck[0].values.first == _game.matchCheck[1].values.first  ) {
                                 print("true");
                                 //incrementing the score
                                 score += 100;

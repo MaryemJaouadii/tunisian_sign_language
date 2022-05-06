@@ -9,12 +9,12 @@ class Game {
   List<String> cards_list = [
     "assets/family/ابن.gif",
     "assets/family/ابنة.gif",
-    "assets/family/ابن.gif",
-    "assets/family/ابنة.gif",
-    "assets/months/april.gif",
-    "assets/months/june.gif",
-    "assets/months/april.gif",
-    "assets/months/june.gif",
+    "gamesLabels/assets/family/ابن.gif",
+    "gamesLabels/assets/family/ابنة.gif",
+    "assets/family/اخ.gif",
+    "assets/family/اخت.gif",
+    "gamesLabels/assets/family/اخ.gif",
+    "gamesLabels/assets/family/اخت.gif",
   ];
   final int cardCount = 8;
   List<Map<int, String>> matchCheck = [];
